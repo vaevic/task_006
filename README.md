@@ -1,4 +1,4 @@
-#task_006
+# task_006
 
 1. 필수 과제 1번부터 도전 과제 1번까지는 taskMap001에 구현되어있습니다.
 2. 필수 과제1,2 번은 RatationPlatform과 MovingPlatform에 구현되어있습니다.
