@@ -1,4 +1,5 @@
 #include "PlatformSpawner.h"
+#include "TimerPlatform.h"
 #include "RandomPlatform.h"
 
 APlatformSpawner::APlatformSpawner()
@@ -6,7 +7,7 @@ APlatformSpawner::APlatformSpawner()
 	PrimaryActorTick.bCanEverTick = true;
 
 	NumOfSpawn = 10;
-	SpawnRange = 50.0f;
+	SpawnRange = 500.0f;
 
 }
 
@@ -17,19 +18,28 @@ void APlatformSpawner::BeginPlay()
 	
 	for (int i = 0; i < NumOfSpawn; i++)
 	{
-		RandomValue.X = FMath::RandRange(-SpawnRange, SpawnRange);
-		RandomValue.Y = FMath::RandRange(-SpawnRange, SpawnRange);
-		RandomValue.Z = 0.0f;
+		/*if (PlatformsToSpawn.Num() > 0)
+		{*/
+			RandomValue.X = FMath::RandRange(-1.0f * SpawnRange, SpawnRange);
+			RandomValue.Y = FMath::RandRange(-1.0f * SpawnRange, SpawnRange);
+			RandomValue.Z = FMath::RandRange(50.0f, 300.0f); //임의로 숫자 지정	
+			/*const int32 ClassIndex = FMath::RandRange(0, PlatformsToSpawn.Num() - 1);
+			TSubclassOf<ARandomPlatform> Pick = PlatformsToSpawn[ClassIndex];*/
 
-		FVector SpawnLocation(RandomValue);
-		FRotator SpawnRotation = FRotator::ZeroRotator;
+			FVector SpawnLocation(RandomValue);
+			FRotator SpawnRotation = FRotator::ZeroRotator;
 
-		const int32 ClassIndex = FMath::RandRange(0, PlatformsToSpawn.Num() - 1);
-		TSubclassOf<AActor> ChosenClass = PlatformsToSpawn[ClassIndex];
+			FActorSpawnParameters SpawnParams;
+			GetWorld()->SpawnActor<ATimerPlatform>(PlatformClass, SpawnLocation, SpawnRotation, SpawnParams);
+		//}
 
-
-		GetWorld()->SpawnActor<ARandomPlatform>(PlatformClass, SpawnLocation, SpawnRotation);
+		/*else
+		{
+			UE_LOG(LogTemp, Warning, TEXT("error"));
+		}*/
 	}
+	//GetWorld()->SpawnActor<ATimerPlatform>(PlatformClass, FVector::ZeroVector, FRotator::ZeroRotator);
+	
 }
 
 void APlatformSpawner::Tick(float DeltaTime)

@@ -18,11 +18,11 @@ protected:
 	virtual void BeginPlay() override;
 	virtual void Tick(float DeltaTime) override;
 
-	UPROPERTY(EditAnywhere, Category = "Random")
-	TSubclassOf<ARandomPlatform> PlatformClass;
+	UPROPERTY(EditAnywhere, Category = "Spawn")
+	TSubclassOf<ATimerPlatform> PlatformClass;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Random")
-	TArray<TSubclassOf<ARandomPlatform>> PlatformsToSpawn;
+	/*UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Random")
+	TArray<TSubclassOf<ARandomPlatform>> PlatformsToSpawn;*/
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Random")
 	int32 NumOfSpawn;

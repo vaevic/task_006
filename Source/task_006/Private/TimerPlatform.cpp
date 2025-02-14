@@ -18,7 +18,7 @@ void ATimerPlatform::BeginPlay()
 {
 	Super::BeginPlay();
 
-	SetActorLocation(FVector(385.0f, -151.0f, 311.0f));
+	//SetActorLocation(FVector(385.0f, -151.0f, 311.0f));
 	StartRotate = GetActorRotation();
 
 	GetWorld()->GetTimerManager().SetTimer(
