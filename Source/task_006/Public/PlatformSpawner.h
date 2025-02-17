@@ -19,10 +19,10 @@ protected:
 	virtual void Tick(float DeltaTime) override;
 
 	UPROPERTY(EditAnywhere, Category = "Spawn")
-	TSubclassOf<ATimerPlatform> PlatformClass;
+	TSubclassOf<ARandomPlatform> PlatformClass;
 
-	/*UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Random")
-	TArray<TSubclassOf<ARandomPlatform>> PlatformsToSpawn;*/
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Random")
+	TArray<TSubclassOf<ARandomPlatform>> PlatformsToSpawn;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Random")
 	int32 NumOfSpawn;
